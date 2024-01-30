@@ -33,7 +33,8 @@ var DynamicAdmin = {
     app_label,
     model_name,
     select_field_names,
-    input_field_names
+    input_field_names,
+    dynamic_admin_url
   ) {
     var $ = django.jQuery;
     var that = this;
@@ -47,7 +48,7 @@ var DynamicAdmin = {
         ["model_name", model_name],
         ...field_names.map((name) => ["field_names", name]),
       ]);
-      var url = `/dynamic-admin-form/?${params}`;
+      var url = `${dynamic_admin_url}?${params}`;
       $.post({
         url,
         data: new FormData(this),

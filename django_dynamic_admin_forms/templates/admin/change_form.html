@@ -11,7 +11,8 @@
   <script type="text/javascript">
     var dynamic_select_fields = JSON.parse(document.getElementById('dynamic_select_fields').textContent);
     var dynamic_input_fields = JSON.parse(document.getElementById('dynamic_input_fields').textContent);
-    DynamicAdmin.dynamicWidgets("{{ opts.app_label }}", "{{ opts.model_name }}", dynamic_select_fields, dynamic_input_fields);
+    var dynamic_admin_url = "{{ adminform.model_admin.dynamic_admin_url }}"
+    DynamicAdmin.dynamicWidgets("{{ opts.app_label }}", "{{ opts.model_name }}", dynamic_select_fields, dynamic_input_fields, dynamic_admin_url);
   </script>
 {% endblock %}
 

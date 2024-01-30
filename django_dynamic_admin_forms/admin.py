@@ -2,6 +2,7 @@ import json
 from itertools import filterfalse
 
 from django.apps import apps
+from django.conf import settings
 from django.contrib import admin
 from django.core.exceptions import FieldDoesNotExist, PermissionDenied
 from django.http import HttpResponse
@@ -11,6 +12,7 @@ class DynamicModelAdminMixin:
     dynamic_fields = ()
     dynamic_select_fields = None
     dynamic_input_fields = None
+    dynamic_admin_url = getattr(settings, "", "/dynamic-admin-form/")
 
     def get_form(self, request, obj=None, change=False, **kwargs):
         form = super().get_form(request, obj, **{"change": change, **kwargs})
